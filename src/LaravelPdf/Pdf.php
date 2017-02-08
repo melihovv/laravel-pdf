@@ -147,4 +147,16 @@ class Pdf {
 	{
 		return $this->mpdf->Output($filename, 'I');
 	}
+
+	/**
+	 * Call native mpdf method.
+	 *
+	 * @param $name
+	 * @param $arguments
+	 * @return mixed
+	 */
+	public function __call($name, $arguments)
+	{
+		return call_user_func_array(array($this->mpdf, $name), $arguments);
+	}
 }
